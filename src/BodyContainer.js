@@ -1,15 +1,21 @@
-import React, {Component} from 'react';
+// import React, {Component} from 'react';
+import React from 'react';
 
-class BodyContainer extends Component{
-    render(){
+
+
+function BodyContainer(props){
         return(
             <div className="form-container">
-                <button onClick={this.props.onClick}>change name</button>
-                <button onClick={this.props.CallFunction}>call function()</button>
-                <h1>{this.props.Name}</h1>
-                <input type="text" onChange={this.props.rewriteName}/>
+                {
+                props.data.map((index, value)=>{
+                    return <div key={value}><input type="text" value={index.todo}/><button id={value} onClick={props.Remove}>Remove</button></div>;
+                })
+            }
             </div>
         )
-    }
+  
 }
+
+
+
 export default BodyContainer; 

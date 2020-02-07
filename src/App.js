@@ -5,28 +5,29 @@ import BodyContainer from './BodyContainer';
 class App extends Component{
 
   state={
-    display:'sheerland'
+    display:[{"0":"first"},{"1":"second"}]
   }
 
   alertFunction= () =>{alert()};
-
+  alertMe=()=>{this.setState({display:'testProps'})}
   rewriteTheStars=(e)=>{this.setState({display:e.target.value})}
-  Submit=()=>{alert(1);}
+  Submit=()=>{this.setState({display:'ED'})}
+  Remove=(e)=>{
+    this.setState({
+      display:this.state.display.filter((key,value)=>key[e.target.id])
+    })
+   
+}
   render(){
     return (
       <div className="container">
         <NavBar/>
         <div className="body-container">
-        <button onClick={this.Submit}>SUBMIT</button>
-        {this.state.display}
-        <BodyContainer
-        Name = 'test'
-        onClick={() =>this.setState({display:'ed'}) }
-        CallFunction={this.alertFunction}
-        rewriteName={this.rewriteTheStars}
+        <BodyContainer 
+        data={this.state.display}
+        Remove = {this.Remove}
         />
         </div>
-        
       </div>
     )
   }
