@@ -1,6 +1,8 @@
-const changeText = (e) =>{
-    return{
-        type:"CHANGE_NAME",
-        payload:100
+export const changeName= name =>{
+    return {
+        type: "CHANGE_NAME",
+        payload: {
+            name: name
+        }
     }
 }
